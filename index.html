@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EngiNotes - College & Engineering Study Hub</title>
+    <meta name="description" content="Discover, share, and preview verified engineering lecture notes, handwritten summaries, PYQs, and branch syllabi." />
+    <meta property="og:title" content="EngiNotes - College & Engineering Study Hub" />
+    <meta property="og:description" content="Discover, share, and preview verified engineering lecture notes, handwritten summaries, PYQs, and branch syllabi." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      // 1. Ensure directory URLs on GitHub Pages end with a trailing slash
+      (function() {
+        var l = window.location;
+        if (l.hostname.endsWith('github.io')) {
+          var path = l.pathname;
+          var segments = path.split('/').filter(Boolean);
+          // If accessing repo root without trailing slash (e.g. /my-repo)
+          if (segments.length === 1 && !path.endsWith('/')) {
+            l.replace(l.protocol + '//' + l.host + path + '/' + l.search + l.hash);
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased font-sans">
+    <div id="root">
+      <div id="enginotes-loader" style="min-height: 100vh; background-color: #020617; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; padding: 24px;">
+        <div style="max-width: 500px; background: #0f172a; border: 1px solid #334155; border-radius: 16px; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); text-align: center;">
+          <div style="width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, #0284c7, #2563eb); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+            📚
+          </div>
+          <h1 style="font-size: 22px; font-weight: 800; margin: 0 0 8px; color: #ffffff;">EngiNotes Study Hub</h1>
+          <p style="font-size: 13px; color: #94a3b8; margin: 0 0 20px; line-height: 1.5;">
+            Loading verified engineering notes, syllabus, and study resources...
+          </p>
+          <div style="display: inline-block; width: 36px; height: 36px; border: 3px solid #1e293b; border-top-color: #38bdf8; border-radius: 50%; animation: enginotes-spin 0.8s linear infinite;"></div>
+          <style>@keyframes enginotes-spin { to { transform: rotate(360deg); } }</style>
+          
+          <div id="fallback-help" style="display: none; margin-top: 24px; padding-top: 20px; border-top: 1px solid #334155; text-align: left;">
+            <p style="font-size: 12px; color: #f59e0b; font-weight: bold; margin-bottom: 8px;">
+              ⚠️ GitHub Pages Notice:
+            </p>
+            <p style="font-size: 11px; color: #94a3b8; line-height: 1.5; margin-bottom: 12px;">
+              If you pushed your repository to GitHub, make sure your GitHub Pages Source is set to:
+              <br><strong style="color: #38bdf8;">Settings &gt; Pages &gt; Branch: main &gt; Folder: /docs</strong> (or GitHub Actions).
+            </p>
+            <div style="display: flex; gap: 8px; justify-content: center;">
+              <a href="./docs/" style="display: inline-block; padding: 8px 16px; background: #0284c7; color: #ffffff; text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: bold;">
+                Open /docs/ Version
+              </a>
+              <button onclick="window.location.reload()" style="padding: 8px 16px; background: #1e293b; color: #ffffff; border: 1px solid #475569; border-radius: 8px; font-size: 12px; cursor: pointer;">
+                Reload
+              </button>
+            </div>
+          </div>
+          
+          <noscript>
+            <div style="margin-top: 16px; padding: 10px; background: #451a03; border: 1px solid #78350f; border-radius: 8px; color: #fef3c7; font-size: 12px;">
+              Please enable JavaScript in your browser to use EngiNotes.
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic loader script for GitHub Pages / static deployment -->
+    <script>
+      // If after 4 seconds the app hasn't mounted, display troubleshooting options
+      setTimeout(function() {
+        if (!window.__ENGINOTES_LOADED__) {
+          var fb = document.getElementById('fallback-help');
+          if (fb) fb.style.display = 'block';
+          // Try dynamically loading ./assets/index.js if on static server
+          if (!document.querySelector('script[src*="assets/"]')) {
+            var s = document.createElement('script');
+            s.type = 'module';
+            s.crossOrigin = 'anonymous';
+            s.src = './assets/index.js';
+            document.head.appendChild(s);
+            var c = document.createElement('link');
+            c.rel = 'stylesheet';
+            c.href = './assets/index.css';
+            document.head.appendChild(c);
+          }
+        }
+      }, 3500);
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
